@@ -1,1 +1,1 @@
-web: python reader.py
+web: gunicorn app:app
