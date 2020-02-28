@@ -3,7 +3,11 @@ import xmltodict
 import os
 app = Flask(__name__)
 
-@app.route("/nfe/upload", methods = ['GET', 'POST'])
+@app.route('/')
+def index():
+    return "simple xml reader"
+
+@app.route("/nfe/upload", methods = ['POST'])
 def upload():
    if request.method == 'POST':
        f = request.files['file']
