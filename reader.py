@@ -7,9 +7,11 @@ app = Flask(__name__)
 def index():
     return "simple xml reader"
 
-@app.route("/nfe/upload", methods = ['POST'])
+@app.route("/nfe/upload", methods = ['POST', 'GET'])
 def upload():
-   if request.method == 'POST':
+    if request.method == 'GET':
+       return 'you need send a post request with a xml file.. parameter: file: nfe.xml'
+    if request.method == 'POST':
        f = request.files['file']
        doc = xmltodict.parse(f)
        dest = {"cpf": doc["nfeProc"]["NFe"]["infNFe"]["dest"]["CPF"],"nome": doc["nfeProc"]["NFe"]["infNFe"]["dest"]["CPF"] }
